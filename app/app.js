@@ -1,3 +1,5 @@
 "use strict";
 
-angular.module('myApp', []);
+angular.module('myApp', [
+  'myApp.colorpicker'
+]);

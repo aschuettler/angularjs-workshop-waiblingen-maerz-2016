@@ -32,5 +32,8 @@
     "karma-phantomjs-launcher": "0.2.0",
     "phantomjs": "^1.9.18",
     "live-server": "0.9.1"
+  },
+  "standard": {
+    "globals": [ "angular" ]
   }
 }

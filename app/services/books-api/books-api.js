@@ -44,8 +44,14 @@ angular.module('myApp.booksApi', [])
       }
     }
 
+    function save (book) {
+      return $http.put(baseUrl + book.isbn, book)
+        .then(_extractData)
+    }
+
     return {
       loadByIsbn: loadByIsbn,
-      loadAll: loadAll
+      loadAll: loadAll,
+      save: save
     }
   })

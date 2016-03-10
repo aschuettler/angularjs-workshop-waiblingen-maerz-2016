@@ -1,4 +1,4 @@
-<form>
+<form ng-submit="$ctrl.handleSubmit($ctrl.book)">
   <div class="form-group">
     <label>Book's Title</label>
     <input type="text" class="form-control" placeholder="title" ng-model="$ctrl.book.title">
@@ -13,6 +13,8 @@
   </div>
   <button type="submit" class="btn btn-default">Save book</button>
 </form>
+
+<pre>$ctrl.submitted = {{$ctrl.submitted | json}}</pre>
 
 <hr>
 

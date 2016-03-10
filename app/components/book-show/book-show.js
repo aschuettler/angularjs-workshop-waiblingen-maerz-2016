@@ -1,11 +1,8 @@
 'use strict'
 
-function bookShow ($http) {
+function bookShow (booksApi, $routeParams) {
 
-  $http.get('http://bookmonkey-api.angularjs.de/books/978-3-89864-829-5')
-    .then(function (bookResponse) {
-      return bookResponse.data
-    })
+  booksApi.loadByIsbn($routeParams.isbn)
     .then(function (book) {
       this.book = book
     }.bind(this))
@@ -13,7 +10,9 @@ function bookShow ($http) {
     // ES2015 .then(book => this.book = book)
 }
 
-angular.module('myApp.bookShow', [])
+angular.module('myApp.bookShow', [
+  'myApp.booksApi'
+])
   .component('bookShow', {
     templateUrl: 'components/book-show/book-show.html',
     controller: bookShow

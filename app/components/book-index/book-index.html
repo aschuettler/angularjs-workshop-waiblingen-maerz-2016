@@ -1,0 +1,11 @@
+<p>Hi, I'm booksIndex.</p>
+
+<input type="search" ng-model="$ctrl.search.$" placeholder="Suche…">
+
+<input type="search"
+       ng-model="$ctrl.search.title"
+       placeholder="Titel-Suche…"
+       ng-change="$ctrl.search.$=''">
+
+<book-row-item ng-repeat="myBookItem in $ctrl.books | filter:$ctrl.search" book="myBookItem">
+</book-row-item>

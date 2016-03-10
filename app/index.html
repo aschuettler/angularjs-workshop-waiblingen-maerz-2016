@@ -14,14 +14,8 @@
     <input type="text" ng-model="name" />
     
     <hr>
-    
-    <book-show></book-show>
-    
-    <hr>
 
-    <colorpicker r="255" g="0" b="40" a="murks"></colorpicker>
-    <colorpicker r="255" g="0" b="40" a="murks"></colorpicker>
-    <colorpicker r="255" g="0" b="40" a="murks"></colorpicker>
+    <ng-view></ng-view>
 
   </div>
   <!-- 3rd-Party Libs -->
@@ -30,7 +24,12 @@
   <script src="vendor/angular-route/angular-route.js"></script>
   <!-- Application Files -->
   <script src="app.js"></script>
+  <script src="routes.js"></script>
   <script src="components/colorpicker/colorpicker.js"></script>
   <script src="components/book-show/book-show.js"></script>
+  <script src="services/books-api/books-api.js"></script>
+  <script src="components/book-index/book-index.js"></script>
+  <script src="components/book-row-item/book-row-item.js"></script>
+  <script src="components/book-edit/book-edit.js"></script>
 </body>
 </html>

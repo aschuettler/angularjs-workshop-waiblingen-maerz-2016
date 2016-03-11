@@ -1,21 +1,47 @@
-<form ng-submit="$ctrl.handleSubmit($ctrl.book)">
+<form ng-submit="$ctrl.handleSubmit($ctrl.book)" novalidate name="$ctrl.form">
   <div class="form-group">
     <label>Book's Title</label>
-    <input type="text" class="form-control" placeholder="title" ng-model="$ctrl.book.title">
+    <input type="text"
+           class="form-control"
+           placeholder="title"
+           name="title"
+           ng-model="$ctrl.book.title"
+           required>
+    <span ng-if="$ctrl.form.title.$error.required"
+          class="help-block">
+      Dieses Feld muss ausgefüllt werden!
+    </span>
   </div>
-  <div class="form-group">
+  <div class="form-group"
+       ng-class="{'has-warning': $ctrl.form.author.$invalid}">
     <label>Author's name</label>
-    <input type="text" class="form-control" placeholder="author" ng-model="$ctrl.book.author">
+    <input type="text"
+           class="form-control"
+           placeholder="author"
+           name="author"
+           ng-model="$ctrl.book.author"
+           minlength="3"
+           required>
+    <span ng-if="$ctrl.form.author.$error.minlength"
+          class="help-block">
+      Dieses Feld muss mindestens drei Zeichen lang sein!
+    </span>
+    <span ng-if="$ctrl.form.author.$error.required"
+          class="help-block">
+      Dieses Feld muss ausgefüllt werden!
+    </span>
   </div>
   <div class="form-group">
     <label>Abstract</label>
     <textarea class="form-control" ng-model="$ctrl.book.abstract"></textarea>
   </div>
-  <button type="submit" class="btn btn-default">Save book</button>
+  <button type="submit"
+          class="btn btn-default"
+          ng-disabled="$ctrl.form.$invalid">Save book</button>
 </form>
 
-<pre>$ctrl.submitted = {{$ctrl.submitted | json}}</pre>
-
 <hr>
+
+<pre>$ctrl.form = {{ $ctrl.form | json }}</pre>
 
 <pre>$ctrl.book = {{ $ctrl.book | json }}</pre>

@@ -5,7 +5,9 @@ angular.module('myApp.bookEdit', [
 ])
   .component('bookEdit', {
     templateUrl: 'components/book-edit/book-edit.html',
-    controller: function (booksApi, $routeParams, $location) {
+    controller: function ($scope, $rootScope, booksApi, $routeParams, $location) {
+
+      // this = $scope.$ctrl
 
       booksApi.loadByIsbn($routeParams.isbn)
         .then(function (book) {
@@ -13,6 +15,11 @@ angular.module('myApp.bookEdit', [
         }.bind(this))
 
       this.handleSubmit = function (book) {
+        if (this.form.$invalid) {
+          window.alert('Sende ich nicht ab, so!')
+          return
+        }
+
         booksApi.save(book)
           .then(function () {
             $location.url('/books/' + book.isbn)
